@@ -24,7 +24,7 @@ async def root():
 
 @app.post("/")
 async def pdftoimage(url: URL):
-    images = convert_from_path(url, first_page=1, last_page=1)
+    images = convert_from_path(url.pdf_url, first_page=1, last_page=1)
     for i, image in enumerate(images):
         fname = "image" + str(i) + ".png"
         image.save(fname, "PNG")
